@@ -22,4 +22,30 @@ class LinkedList {
     }
     this.size++;
   };
+
+  addAt = (value, index) => {
+    if (index > 0 && index > this.size) return false;
+    else {
+      let node = new Node(value);
+      let curr = this.head;
+
+      if (index === 0) {
+        node.next = head;
+        this.head = node;
+      } else {
+        let itr = 0,
+          prev,
+          curr;
+        while (itr < index) {
+          itr++;
+          prev = curr;
+          curr = curr.next;
+        }
+
+        node.next = curr;
+        prev.next = node;
+      }
+    }
+    this.size++;
+  };
 }
