@@ -46,11 +46,30 @@ class LinkedList {
     this.size++;
   };
 
+  prepend = (value) => {
+    let node = new Node(value);
+    if (this.head === null) {
+      this.add(value);
+    } else {
+      this.addAt(value, 0);
+    }
+    this.size++;
+  };
 
+  printList() {
+    var curr = this.head;
+    var str = "";
+    while (curr) {
+      str += curr.value + " ";
+      curr = curr.next;
+    }
+    console.log(str);
+  }
+}
 
 let ll = new LinkedList(10);
-ll.add(0);
-ll.add(1);
-ll.add(2);
-ll.addAt(7, 3);
+ll.prepend(5);
+ll.prepend(4);
+ll.prepend(3);
+
 ll.printList();
