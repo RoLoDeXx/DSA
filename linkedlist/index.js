@@ -56,6 +56,32 @@ class LinkedList {
     this.size++;
   };
 
+  remove(index = this.size - 1) {
+    if ((index > 0 && index > this.size) || index === this.size) return -1;
+    else {
+      var curr,
+        prev,
+        it = 0;
+      curr = this.head;
+      prev = curr;
+
+      if (index === 0) {
+        this.head = curr.next;
+      } else {
+        while (it < index) {
+          it++;
+          prev = curr;
+          curr = curr.next;
+        }
+
+        prev.next = curr.next;
+      }
+      this.size--;
+
+      return curr.element;
+    }
+  }
+
   printList() {
     var curr = this.head;
     var str = "";
@@ -68,8 +94,9 @@ class LinkedList {
 }
 
 let ll = new LinkedList(10);
-ll.prepend(5);
-ll.prepend(4);
-ll.prepend(3);
-
+ll.add(5);
+ll.add(4);
+ll.add(3);
+ll.remove();
 ll.printList();
+console.log(ll.size);
